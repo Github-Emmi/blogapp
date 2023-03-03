@@ -1,0 +1,38 @@
+{% extends 'blog_templates/base.html' %}
+{% load static %}
+
+{% block main_content %}
+
+  <main id="main">
+
+    <!-- ======= Hero Slider Section ======= -->
+    {% include 'blog_templates/includes/slider.html' %}
+    <!-- End Hero Slider Section -->
+
+    <!-- ======= Post HTML Section ======= -->
+    <section id="posts" class="posts">
+      <div class="container" data-aos="fade-up">
+        {% include 'blog_templates/includes/html.html' %}
+      </div>
+    </section> <!-- End Post HTML Section -->
+
+    <!-- ======= CSS Category Section ======= -->
+      {% include 'blog_templates/includes/css.html' %}
+      <!-- End CSS Category Section -->
+
+    <!-- ======= JavaScript Category Section ======= -->
+    {% include 'blog_templates/includes/javascript.html' %}
+    <!-- End JavaScript Category Section -->
+
+    <!-- ======= Python Category Section ======= -->
+    {% include 'blog_templates/includes/python.html' %}
+    <!-- End Python Category Section -->
+
+    <!-- ======= Django Category Section ======= -->
+    {% include 'blog_templates/includes/django.html' %}
+    <!-- End Django Category Section -->
+
+  </main>
+  <!-- End #main -->
+
+  {% endblock main_content%}

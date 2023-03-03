@@ -1,0 +1,16 @@
+<div class="col-lg-4">
+    <h3 class="footer-heading">Recent Posts</h3>
+
+    {% for post in recent_posts %}
+    <ul class="footer-links footer-blog-entry list-unstyled">
+      <li>
+        <a href="{{post.get_absolute_url}}" class="d-flex align-items-center">
+          <img src="{{ post.image.url}}" alt="" class="img-fluid me-3">
+          <div>
+            <div class="post-meta d-block"><span class="date">{{ post.categories }}</span> <span class="mx-1">&bullet;</span> <span>Jul 5th '22</span></div>
+            <span></span>
+          </div>
+        </a>
+      </li>
+    </ul>
+    {% endfor %}

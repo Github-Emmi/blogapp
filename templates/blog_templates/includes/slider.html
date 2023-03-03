@@ -1,0 +1,31 @@
+<section id="hero-slider" class="hero-slider">
+    <div class="container-md" data-aos="fade-in">
+      <div class="row">
+        <div class="col-12">
+          <div class="swiper sliderFeaturedPosts">
+            <div class="swiper-wrapper">
+              {% for slider in sliders %}
+              <div class="swiper-slide">
+                <a href="{{ slider.get_absolute_url }}" class="img-bg d-flex align-items-end" style="background-image: url('{{ slider.image.url }}');">
+                  <div class="img-bg-inner">
+                    <h2>{{ slider.title }}</h2>
+                    <p>{{ slider.body|truncatewords:40|linebreaks }}</p>
+                  </div>
+                </a>
+              </div>
+              {% endfor %}
+            </div>
+
+            <div class="custom-swiper-button-next">
+              <span class="bi-chevron-right"></span>
+            </div>
+            <div class="custom-swiper-button-prev">
+              <span class="bi-chevron-left"></span>
+            </div>
+
+            <div class="swiper-pagination">next</div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>

@@ -1,0 +1,126 @@
+{% extends 'blog_templates/base.html' %}
+{% load blog_tags %}
+{% load static %}
+
+{% block main_content%}
+
+<main id="main">
+
+    <!-- ======= Search Results ======= -->
+    <section id="search-result" class="search-result">
+      <div class="container">
+        <div class="row">
+          <div class="col-md-9">
+            <div class="post-meta">
+                {% for post in page_object %}
+              <span class="date">categories/JS</span>
+              {% endfor %}
+            </div>
+             
+            {% for post in page_object %}
+            <div class="d-md-flex post-entry-2 small-img">
+              <a href="{{ post.get_absolute_url }}" class="me-4 thumbnail">
+                <img src="{{ post.image.url }}" alt="" class="img-fluid">
+              </a>
+              <div>
+                <div class="post-meta"><span class="date">{{ post.categories }}</span> <span class="mx-1">&bullet;</span> <span class="date">{{ post.publish }}</span></div>
+                <h3><a href="{{ post.get_absolute_url }}">{{ post.title }}</a></h3>
+                <p>{{ post.body|truncatewords:40|linebreaks }}</p>
+                <div class="d-flex align-items-center author">
+                  <div class="photo"><img src="{{ post.author_pic.url }}" alt="" class="img-fluid"></div>
+                  <div class="name">
+                    <h3 class="m-0 p-0">{{ post.author.first_name}} {{ post.author.last_name }}</h3>
+                  </div>
+                </div>
+              </div>
+            </div>
+            {% endfor %}
+            
+
+            <!-- Paging -->
+            <div class="text-start py-4">
+              <div class="custom-pagination">
+                {% if page_object.has_previous %}
+                  <a href="?page={{ page_object.previous_page_number }}" class="prev">Prevous</a>
+                {% endif %}
+             <span class ="mx-1">Page {{ page_object.number }} of {{ page_object.paginator.num_pages }}</span>
+             {% if page_object.has_next %}
+                <a href="?page={{ page_object.next_page_number }}">Next</a>
+             {% endif %}
+              </div>
+            </div><!-- End Paging -->
+
+          </div>
+
+          <div class="col-md-3">
+            <!-- ======= Sidebar ======= -->
+            <div class="aside-block">
+
+                <ul class="nav nav-pills custom-tab-nav mb-4" id="pills-tab" role="tablist">
+                  <li class="nav-item" role="presentation">
+                    <button class="nav-link active" id="pills-popular-tab" data-bs-toggle="pill" data-bs-target="#pills-popular" type="button" role="tab" aria-controls="pills-popular" aria-selected="true">Popular</button>
+                  </li>
+                  <li class="nav-item" role="presentation">
+                    <button class="nav-link" id="pills-trending-tab" data-bs-toggle="pill" data-bs-target="#pills-trending" type="button" role="tab" aria-controls="pills-trending" aria-selected="false">Trending</button>
+                  </li>
+                  <li class="nav-item" role="presentation">
+                    <button class="nav-link" id="pills-latest-tab" data-bs-toggle="pill" data-bs-target="#pills-latest" type="button" role="tab" aria-controls="pills-latest" aria-selected="false">Latest</button>
+                  </li>
+                </ul>
+  
+                <div class="tab-content" id="pills-tabContent">
+  
+                   <!-- Popular -->
+                   {% get_most_commented_post as commented_post %}
+                 <div class="tab-pane fade show active" id="pills-popular" role="tabpanel" aria-labelledby="pills-popular-tab">
+                  {% for post in commented_post %}
+                  <div class="post-entry-1 border-bottom">
+                    <div class="post-meta"><span class="date">{{ post.categories }}</span> <span class="mx-1">&bullet;</span> <span>{{ post.publish }}</span></div>
+                    <h2 class="mb-2"><a href="{{ post.get_absolute_url }}">{{ post.title }}</a></h2>
+                    <span class="author mb-3 d-block">{{ post.author.first_name}} {{ post.author.last_name}}</span>
+                  </div>
+                  {% endfor %}
+                 </div>      
+                   <!-- End Popular -->
+  
+                   <!-- Trending -->
+                   {% show_trending_post %} 
+                   <!-- End Trending -->
+  
+                   <!-- Latest -->
+                   {% show_latest_posts %} 
+                   <!-- End Latest -->
+                
+  
+                </div>
+            </div>
+
+            <div class="aside-block">
+              <h3 class="aside-title">Video</h3>
+              <div class="video-post">
+                <a href="{{ post.video }}" class="glightbox link-video">
+                  <span class="bi-play-fill"></span>
+                  <img src="assets/img/post-landscape-5.jpg" alt="" class="img-fluid">
+                </a>
+              </div>
+            </div><!-- End Video -->
+
+            <div class="aside-block">
+              <h3 class="aside-title">Categories</h3>
+              <ul class="aside-links list-unstyled">
+                <li><a href="{% url 'blog:html' %}"><i class="bi bi-chevron-right"></i> HTML</a></li>
+                <li><a href="{% url 'blog:css' %}"><i class="bi bi-chevron-right"></i> CSS</a></li>
+                <li><a href="{% url 'blog:js' %}"><i class="bi bi-chevron-right"></i> JavaScripts</a></li>
+                <li><a href="{% url 'blog:python' %}"><i class="bi bi-chevron-right"></i> Python</a></li>
+                <li><a href="{% url 'blog:django' %}"><i class="bi bi-chevron-right"></i> Django</a></li>
+              </ul>
+            </div><!-- End Categories -->
+
+        </div>
+
+        </div>
+      </div>
+    </section> <!-- End Search Result -->
+
+  </main><!-- End #main -->
+  {% endblock main_content%}

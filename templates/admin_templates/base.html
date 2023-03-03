@@ -1,0 +1,119 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <title>{% block title %}Emmi_Blog Admin{% endblock title %}</title>
+      <script src="https://oss.maxcdn.com/libs/html5shiv/3.7.0/html5shiv.js"></script>
+      <script src="https://oss.maxcdn.com/libs/respond.js/1.4.2/respond.min.js"></script>
+    <!-- Meta -->
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=0, minimal-ui">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+
+    <meta name="keywords" content="{% block keywords %}Emmi Blog admin, manage all your blog posts and your profile here.{% endblock keywords %}" />
+    <meta name="author" content="Emmi_Dev" />
+    <!-- Favicon icon -->
+    <link rel="icon" href="{% static 'admin-assets/img/favicon.ico' %}" type="image/x-icon">
+    <!-- Google font-->
+    <link href="https://fonts.googleapis.com/css?family=Open+Sans:400,600,700" rel="stylesheet">
+    <!-- waves.css -->
+    <link rel="stylesheet" href="{% static 'admin-assets/css/waves.min.css' %}" type="text/css" media="all">
+    <!-- Required Fremwork -->
+    <link rel="stylesheet" type="text/css" href="{% static 'admin-assets/css/bootstrap.min.css' %}">
+    <!-- waves.css -->
+    <link rel="stylesheet" href="{% static 'admin-assets/css/waves.min.css' %}" media="all">
+    <!-- themify icon -->
+    <link rel="stylesheet" type="text/css" href="{% static 'admin-assets/css/themify-icons.css' %}">
+    <!-- font-awesome-n -->
+    <link rel="stylesheet" type="text/css" href="{% static 'admin-assets/css/font-awesome-n.min.css' %}">
+    <link rel="stylesheet" type="text/css" href="{% static 'admin-assets/css/font-awesome.min.css' %}">
+    <!-- scrollbar.css -->
+    <link rel="stylesheet" type="text/css" href="{% static 'admin-assets/css/jquery.mCustomScrollbar.css' %}">
+    <!-- Style.css -->
+    <link rel="stylesheet" type="text/css" href="{% static 'admin-assets/css/style.min.css' %}">
+    <!-- ico font -->
+    <link rel="stylesheet" type="text/css" href="{% static 'admin-assets/css/icofont.css' %}">
+    {% block Stylesheet %} {% endblock Stylesheet %}
+
+</head>
+
+<body>
+    <!-- Pre-loader start -->
+    {% include 'admin_templates/includes/preloader.html' %}
+    <!-- Pre-loader end -->
+    <div id="pcoded" class="pcoded">
+        <div class="pcoded-overlay-box"></div>
+        <div class="pcoded-container navbar-wrapper">
+            <!-- Navbar start -->
+            {% include 'admin_templates/includes/navbar.html' %}
+            <!-- Navbar ends -->
+
+            <div class="pcoded-main-container">
+                <div class="pcoded-wrapper">
+                    <!-- Sidebar start-->
+                    {% include 'admin_templates/includes/sidebar.html' %}
+                    <!-- Sidebar ends -->
+
+                    <div class="pcoded-content">
+                        <!-- Page-header start -->
+                        <div class="page-header">
+                            <div class="page-block">
+                                <div class="row align-items-center">
+                                    <div class="col-md-8">
+                                        <div class="page-header-title">
+                                            <h5 class="m-b-10">{% block dashboard %}Dashboard {% endblock dashboard %}</h5>
+                                            <p class="m-b-0">{% block welcome %} Welcome to your Blog  {% endblock welcome %} </p>
+                                        </div>
+                                    </div>
+                                    <div class="col-md-4">
+                                        <ul class="breadcrumb">
+                                            <li class="breadcrumb-item">
+                                                <a href="index.html"> <i class="fa fa-home"></i> </a>
+                                            </li>
+                                            <li class="breadcrumb-item"><a href="#!">Dashboard</a>
+                                            </li>
+                                        </ul>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <!-- Page-header end -->
+                        <div class="pcoded-inner-content">
+                            <!-- Main-body start -->
+                         {% block main_content %}
+
+
+                         {% endblock main_content %}
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+  
+
+    <!-- Required Jquery -->
+    <script type="text/javascript" src="{% static 'admin-assets/js/jquery.min.js' %}"></script>
+    <script type="text/javascript" src="{% static 'admin-assets/js/jquery-ui.min.js' %}"></script>
+    <script type="text/javascript" src="{% static 'admin-assets/js/popper.min.js' %}"></script>
+    <script type="text/javascript" src="{% static 'admin-assets/js/bootstrap.min.js' %}"></script>
+    <!-- waves js -->
+    <script src="{% static 'admin-assets/js/waves.min.js' %}"></script>
+    <!-- jquery slimscroll js -->
+    <script type="text/javascript" src="{% static 'admin-assets/js/jquery.slimscroll.js' %}"></script>
+
+    <!-- slimscroll js -->
+    <script src="{% static 'admin-assets/js/jquery.mCustomScrollbar.concat.min.js' %}"></script>
+
+    <!-- menu js -->
+    <script src="{% static 'admin-assets/js/pcoded.min.js' %}"></script>
+    <script src="{% static 'admin-assets/js/vertical-layout.min.js' %}"></script>
+    <script src="{% static 'admin-assets/js/accordion.min.js' %}"></script>
+    <script type="text/javascript" src="{% static 'admin-assets/js/script.min.js' %}"></script>
+    {% block custom_js %} 
+    
+    {% endblock custom_js %}
+</body>
+
+</html>

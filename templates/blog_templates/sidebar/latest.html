@@ -1,0 +1,10 @@
+<div class="tab-pane fade" id="pills-latest" role="tabpanel" aria-labelledby="pills-latest-tab">
+  {% for post in latest_posts %}
+    <div class="post-entry-1 border-bottom">
+      <div class="post-meta"><span class="date">{{ post.categories }}</span> <span class="mx-1">&bullet;</span> <span>{{ post.publish }}</span></div>
+      <h2 class="mb-2"><a href="{{ post.get_absolute_url }}">{{ post.title }}</a></h2>
+      <span class="author mb-3 d-block">{{ post.author.first_name}} {{ post.author.last_name }}</span>
+    </div>
+    {% endfor %}
+
+  </div>

@@ -1,0 +1,162 @@
+{% extends 'blog_templates/base.html' %}
+{% load static %}
+{% load blog_tags %}
+{% block Stylesheet %}
+      <!-- Toastr -->
+      <link rel="stylesheet" href="{% static 'admin-assets/css/toastr.min.css' %}">
+      <link rel="stylesheet" type="text/css" href="{% static 'admin-assets/css/bootstrap.min.css' %}">
+      <!-- themify-icons line icon -->
+{% endblock Stylesheet %}
+
+ {% block main_content %}
+ <main id="main">
+
+  <section class="single-post-content">
+    <div class="container">
+      <div class="row">
+        <div class="col-md-9 post-content">
+
+          <!-- ======= Single Post Content ======= -->
+          <div class="single-post">
+            <div class="post-meta"><span class="date">{{ post.categories }}</span> <span class="mx-1">&bullet;</span> <span>{{ post.publish }}</span></div>
+            <h1 class="mb-5">{{ post.title }}</h1><div class="post-meta"><span class="link">Tags: {{ post.tags.all|join:", " }}</span>.</div>
+            <p>{{ post.body }}</p>
+
+            <figure class="my-4">
+              <img src="{{ post.image.url }}" alt="" class="img-fluid">
+            </figure>
+            <p>{{ post.extra }}</p>
+            <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#modal-default">
+              Share post <i class="bi-share"></i>
+            </button>
+
+    <div class="modal fade" id="modal-default" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+  <div class="modal-dialog">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h5 class="modal-title" id="exampleModalLabel">New message</h5>
+        <button type="button" class="btn-close" data-dismiss="modal" aria-label="Close"></button>
+      </div>
+      <div class="modal-body">
+        <form method="post" role="form" action="{% url 'blog:share_post' post.id %}">
+          {% csrf_token %}
+          <div class="mb-3">
+            {{ share_form.name.errors }}
+            {{ share_form.name.label}}
+            {{ share_form.name }}
+          </div>
+
+          <div class="mb-3">
+            {{ share_form.email.errors }}
+            {{ share_form.email.label}}
+            {{ share_form.email }}
+          </div>
+
+          <div class="mb-3">
+            {{ share_form.to.errors }}
+            {{ share_form.to.label}}
+            {{ share_form.to }}
+          </div>
+
+          <div class="mb-3">
+            {{ share_form.comments.errors }}
+            {{ share_form.comments.label}}
+            {{ share_form.comments }}
+          </div>
+    </div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+        <button type="submit" class="btn btn-primary">Send message</button>
+      </div>
+    </form>
+    </div>
+  </div>
+</div>
+            
+          </div><!-- End Single Post Content -->
+
+          <!-- ======= Comments ======= -->
+          <div class="comments">
+            {% if comment %}
+            <h2>Your comment has been added.</h2>
+            <p><a href="{{ post.get_absolute_url }}">Back to the post</a></p>
+            {% else %}
+            {% include 'blog_templates/includes/comments.html' %}
+             {% endif %}
+
+          </div><!-- End Comments -->
+
+        </div>
+        <div class="col-md-3">
+          <!-- ======= Sidebar ======= -->
+          <div class="aside-block">
+
+            <ul class="nav nav-pills custom-tab-nav mb-4" id="pills-tab" role="tablist">
+              <li class="nav-item" role="presentation">
+                <button class="nav-link active" id="pills-popular-tab" data-bs-toggle="pill" data-bs-target="#pills-popular" type="button" role="tab" aria-controls="pills-popular" aria-selected="true">Similar</button>
+              </li>
+              <li class="nav-item" role="presentation">
+                <button class="nav-link" id="pills-trending-tab" data-bs-toggle="pill" data-bs-target="#pills-trending" type="button" role="tab" aria-controls="pills-trending" aria-selected="false">Trending</button>
+              </li>
+              <li class="nav-item" role="presentation">
+                <button class="nav-link" id="pills-latest-tab" data-bs-toggle="pill" data-bs-target="#pills-latest" type="button" role="tab" aria-controls="pills-latest" aria-selected="false">Latest</button>
+              </li>
+            </ul>
+
+            <div class="tab-content" id="pills-tabContent">
+
+               <!-- Similar -->
+               {% include 'blog_templates/sidebar/similar.html' %} 
+               <!-- End Similar -->
+
+              <!-- Trending -->
+              {% show_trending_post %} 
+              <!-- End Trending -->
+
+              <!-- Latest -->
+              {% show_latest_posts %} 
+               <!-- End Latest -->
+
+            </div>
+          </div>
+
+          <div class="aside-block">
+            <h3 class="aside-title">Video</h3>
+            <div class="video-post">
+              <a href="{{ video}}" class="glightbox link-video">
+                <span class="bi-play-fill"></span>
+                <img src="assets/img/post-landscape-5.jpg" alt="" class="img-fluid">
+              </a>
+            </div>
+          </div><!-- End Video -->
+
+          <div class="aside-block">
+            <h3 class="aside-title">Categories</h3>
+            <ul class="aside-links list-unstyled">
+              <li><a href="{% url 'blog:html' %}"><i class="bi bi-chevron-right"></i> HTML</a></li>
+                <li><a href="{% url 'blog:css' %}"><i class="bi bi-chevron-right"></i> CSS</a></li>
+                <li><a href="{% url 'blog:js' %}"><i class="bi bi-chevron-right"></i> JavaScripts</a></li>
+                <li><a href="{% url 'blog:python' %}"><i class="bi bi-chevron-right"></i> Python</a></li>
+                <li><a href="{% url 'blog:django' %}"><i class="bi bi-chevron-right"></i> Django</a></li>
+            </ul>
+          </div><!-- End Categories -->
+        
+        </div>
+      </div>
+    </div>
+  </section>
+</main><!-- End #main -->
+{% endblock main_content %}
+
+{% block custom_js %}
+<script type="text/javascript" src="{% static 'admin-assets/js/jquery.min.js' %}"></script>
+<script type="text/javascript" src="{% static 'admin-assets/js/jquery-ui.min.js' %}"></script>
+<script type="text/javascript" src="{% static 'admin-assets/js/popper.min.js' %}"></script>
+<script type="text/javascript" src="{% static 'admin-assets/js/bootstrap.min.js' %}"></script>
+<script type="text/javascript" src="{% static 'admin-assets/js/script.min.js' %}"></script>
+<!-- SweetAlert2 -->
+<script src="{% static 'admin-assets/js/sweetalert2.min.js' %}"></script>
+<!-- Toastr -->
+<script src="{% static 'admin-assets/js/toastr.min.js' %}"></script>
+{% endblock custom_js %}
+

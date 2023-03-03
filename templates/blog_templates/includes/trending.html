@@ -1,0 +1,15 @@
+<div class="trending">
+    <h3>Trending</h3>
+    {% for post in page_object %}
+    <ul class="trending-post">
+      <li>
+        <a href="{{ post.get_absolute_url }}">
+          <h3>{{ post.title }}</h3>
+          <span class="author">{{ post.author.first_name }} {{ post.author.last_name }}</span>
+        </a>
+      </li>
+      <li>
+    </ul>
+    {% endfor %}
+    {% include 'blog_templates/includes/paginator.html' with page=page_object %}
+  </div>

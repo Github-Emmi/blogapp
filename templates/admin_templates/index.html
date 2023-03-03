@@ -1,0 +1,324 @@
+{% extends 'admin_templates/base.html' %}
+{% load static %}
+
+{% block main_content %}
+        <div class="main-body">
+            <div class="page-wrapper">
+                <!-- Page-body start -->
+                <div class="page-body">
+                    <div class="row">
+                        <!-- post count card start -->
+                        <div class="col-xl-6 col-md-12">
+                            <div class="card mat-stat-card">
+                                <div class="card-block">
+                                    <div class="row align-items-center b-b-default">
+                                        <div class="col-sm-6 b-r-default p-b-20 p-t-20">
+                                            <div class="row align-items-center text-center">
+                                                <div class="col-4 p-r-0">
+                                                    <i class="fa fa-upload text-c-green f-24"></i>
+                                                </div>
+                                                <div class="col-8 p-l-0">
+                                                    <h5>{{ post_count }}</h5>
+                                                    <p class="text-muted m-b-0">All Posts</p>
+                                                </div>
+                                            </div>
+                                        </div>
+                                        <div class="col-sm-6 p-b-20 p-t-20">
+                                            <div class="row align-items-center text-center">
+                                                <div class="col-4 p-r-0">
+                                                    <i class="fa fa-comments text-c-purple f-24"></i>
+                                                </div>
+                                                <div class="col-8 p-l-0">
+                                                    <h5>{{ commment_count }}</h5>
+                                                    <p class="text-muted m-b-0">All Comments</p>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="row align-items-center">
+                                        <div class="col-sm-6 p-b-20 p-t-20 b-r-default">
+                                            <div class="row align-items-center text-center">
+                                                <div class="col-4 p-r-0">
+                                                    <i class="fa fa-html5 text-c-red f-24"></i>
+                                                </div>
+                                                <div class="col-8 p-l-0">
+                                                    <h5>{{ html_count }}</h5>
+                                                    <p class="text-muted m-b-0">HTML</p>
+                                                </div>
+                                            </div>
+                                        </div>
+                                        <div class="col-sm-6 p-b-20 p-t-20">
+                                            <div class="row align-items-center text-center">
+                                                <div class="col-4 p-r-0">
+                                                    <i class="fa fa-css3 text-c-red f-24"></i>
+                                                </div>
+                                                <div class="col-8 p-l-0">
+                                                    <h5>{{ css_count }}</h5>
+                                                    <p class="text-muted m-b-0">CSS</p>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col-xl-6 col-md-12">
+                            <div class="card mat-stat-card">
+                                <div class="card-block">
+                                    <div class="row align-items-center b-b-default">
+                                        <div class="col-sm-6 b-r-default p-b-20 p-t-20">
+                                            <div class="row align-items-center text-center">
+                                                <div class="col-4 p-r-0">
+                                                    <i class="fa fa-js-square text-c-purple f-24"></i>
+                                                </div>
+                                                <div class="col-8 p-l-0">
+                                                    <h5>{{ js_count }}</h5>
+                                                    <p class="text-muted m-b-0">Javascript</p>
+                                                </div>
+                                            </div>
+                                        </div>
+                                        <div class="col-sm-6 p-b-20 p-t-20">
+                                            <div class="row align-items-center text-center">
+                                                <div class="col-4 p-r-0">
+                                                    <i><img src="{% static 'admin-assets/img/python_icon.png' %}" style="height:50px; width:50px;"></i>
+                                                </div>
+                                                <div class="col-8 p-l-0">
+                                                    <h5>{{ python_count }}</h5>
+                                                    <p class="text-muted m-b-0">Python</p>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="row align-items-center">
+                                        <div class="col-sm-12 p-b-20 p-t-20 b-r-default">
+                                            <div class="row align-items-center text-center">
+                                                <div class="col-4 p-r-0">
+                                                    <i class="fa fa-globe text-c-green f-24"></i>
+                                                </div>
+                                                <div class="col-8 p-l-0">
+                                                    <h5>{{ django_count }}</h5>
+                                                    <p class="text-muted m-b-0">Django</p>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Html start -->
+            
+            <div class="row">
+            <div class="col-xl-6 col-md-12">
+                <div class="card">
+                    <div class="card-header">
+                        <h5> HTML </h5>
+                        <div class="card-header-right">
+                            <ul class="list-unstyled card-option">
+                                <li><i class="fa fa fa-wrench open-card-option"></i></li>
+                                <li><i class="fa fa-minus minimize-card"></i></li>
+                                <li><i class="fa fa-refresh reload-card"></i></li>
+                                <li><i class="fa fa-edit"></i></li>
+                            </ul>
+                        </div>
+                    </div>
+                    <div class="card-block accordion-block color-accordion-block">
+                        <div class="accordion-box color-accordion" id="single-open">
+                            {% for post in html_posts %}
+                            <a class="accordion-msg waves-effect waves-dark">{{ post.title }}</a>
+                            <div class="accordion-desc">
+                                <div class="d-inline-block align-middle">
+                                    <img src="{{ post.author.profile_pic.url }}" alt="user image" class="img-radius img-40 align-top m-r-15">
+                                    <div class="d-inline-block text-muted m-b-0">
+                                        <h6>{{ post.author.admin.first_name }} {{ post.author.admin.last_name }}</h6>
+                                    </div>
+                                </div>
+                                <div class="text-right">
+                                    <h6 class="f-w-700 text-muted m-b-0">{{ post.publish }}<i class="fa fa-level-up text-c-green m-l-10"></i></h6>
+                                </div>
+                                <p>
+                                    {{ post.body|truncatewords:40|linebreaks }}
+                                </p>
+                            </div>
+                            {% endfor %}
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <!-- Html ends -->
+
+            <!-- CSS start -->
+            <div class="col-xl-6 col-md-12">
+                <div class="card">
+                    <div class="card-header">
+                        <h5> CSS </h5>
+                        <div class="card-header-right">
+                            <ul class="list-unstyled card-option">
+                                <li><i class="fa fa fa-wrench open-card-option"></i></li>
+                                <li><i class="fa fa-minus minimize-card"></i></li>
+                                <li><i class="fa fa-refresh reload-card"></i></li>
+                                <li><i class="fa fa-edit"></i></li>
+                            </ul>
+                        </div>
+                    </div>
+                    <div class="card-block accordion-block color-accordion-block">
+                        <div class="accordion-box" id="sclae-accordion">
+                            {% for post in css_posts %}
+                            <a class="accordion-msg waves-effect waves-dark">{{ post.title }}</a>
+                            <div class="accordion-desc">
+                                <div class="d-inline-block align-middle">
+                                    <img src="{{ post.author_pic.url }}" alt="user image" class="img-radius img-40 align-top m-r-15">
+                                    <div class="d-inline-block text-muted m-b-0">
+                                        <h6>{{ post.author.first_name }} {{ post.author.last_name}}</h6>
+                                    </div>
+                                </div>
+                                <div class="text-right">
+                                    <h6 class="f-w-700 text-muted m-b-0">{{ post.publish }}<i class="fa fa-level-up text-c-green m-l-10"></i></h6>
+                                </div>
+                                <p>
+                                    {{ post.body|truncatewords:40|linebreaks }}
+                                </p>
+                            </div>
+                            {% endfor %}
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <!-- CSS ends -->
+
+            <!-- js start -->
+            <div class="col-xl-6 col-md-12">
+                <div class="card">
+                    <div class="card-header">
+                        <h5> JS </h5>
+                        <div class="card-header-right">
+                            <ul class="list-unstyled card-option">
+                                <li><i class="fa fa fa-wrench open-card-option"></i></li>
+                                <li><i class="fa fa-minus minimize-card"></i></li>
+                                <li><i class="fa fa-refresh reload-card"></i></li>
+                                <li><i class="fa fa-edit"></i></li>
+                            </ul>
+                        </div>
+                    </div>
+                    <div class="card-block accordion-block color-accordion-block">
+                        <div class="color-accordion" id="multi-open">
+                            {% for post in js_posts %}
+                            <a class="accordion-msg waves-effect waves-dark">{{ post.title }}</a>
+                            <div class="accordion-desc">
+                                <div class="d-inline-block align-middle">
+                                    <img src="{{ post.author_pic.url }}" alt="user image" class="img-radius img-40 align-top m-r-15">
+                                    <div class="d-inline-block text-muted m-b-0">
+                                        <h6>{{ post.author.first_name }} {{ post.author.last_name}}</h6>
+                                    </div>
+                                </div>
+                                <div class="text-right">
+                                    <h6 class="f-w-700 text-muted m-b-0">{{ post.publish }}<i class="fa fa-level-up text-c-green m-l-10"></i></h6>
+                                </div>
+                                <p>
+                                    {{ post.body|truncatewords:40|linebreaks }}
+                                </p>
+                            </div>
+                            {% endfor %}
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <!-- js ends -->
+
+            <!-- python start -->
+            <div class="col-xl-6 col-md-12">
+                <div class="card">
+                    <div class="card-header">
+                        <h5> Python </h5>
+                        <div class="card-header-right">
+                            <ul class="list-unstyled card-option">
+                                <li><i class="fa fa fa-wrench open-card-option"></i></li>
+                                <li><i class="fa fa-minus minimize-card"></i></li>
+                                <li><i class="fa fa-refresh reload-card"></i></li>
+                                <li><i class="fa fa-edit"></i></li>
+                            </ul>
+                        </div>
+                    </div>
+                    <div class="card-block accordion-block color-accordion-block">
+                        <div class="accordion-box" id="color-accordion">
+                            {% for post in python_posts %}
+                            <a class="accordion-msg waves-effect waves-dark">{{ post.title }}</a>
+                            <div class="accordion-desc">
+                                <div class="d-inline-block align-middle">
+                                    <img src="{{ post.author_pic.url }}" alt="user image" class="img-radius img-40 align-top m-r-15">
+                                    <div class="d-inline-block text-muted m-b-0">
+                                        <h6>{{ post.author.first_name }} {{ post.author.last_name}}</h6>
+                                    </div>
+                                </div>
+                                <div class="text-right">
+                                    <h6 class="f-w-700 text-muted m-b-0">{{ post.publish }}<i class="fa fa-level-up text-c-green m-l-10"></i></h6>
+                                </div>
+                                <p>
+                                    {{ post.body|truncatewords:40|linebreaks }}
+                                </p>
+                            </div>
+                            {% endfor %}
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <!-- python ends -->
+
+            <!-- Django start -->
+            <div class="col-xl-12 col-md-12">
+                <div class="card">
+                    <div class="card-header">
+                        <h5> Python </h5>
+                        <div class="card-header-right">
+                            <ul class="list-unstyled card-option">
+                                <li><i class="fa fa fa-wrench open-card-option"></i></li>
+                                <li><i class="fa fa-minus minimize-card"></i></li>
+                                <li><i class="fa fa-refresh reload-card"></i></li>
+                                <li><i class="fa fa-edit"></i></li>
+                            </ul>
+                        </div>
+                    </div>
+                    <div class="card-block accordion-block color-accordion-block">
+                        <div id="accordion" role="tablist" aria-multiselectable="true">
+                            {% for post in django_posts %}
+                            <div class="accordion-panel">
+                                <div class="accordion-heading" role="tab" id="headingOne">
+                                    <h3 class="card-title accordion-title">
+                                        <a class="accordion-msg waves-effect waves-dark" data-toggle="collapse"
+                                        data-parent="#accordion" href="#collapseOne"
+                                        aria-expanded="true" aria-controls="collapseOne">
+                                        {{ post.title }}
+                                    </a>
+                                </h3>
+                            </div>
+                            <div id="collapseOne" class="panel-collapse collapse in" role="tabpanel" aria-labelledby="headingOne">
+                                <div class="accordion-content accordion-desc">
+                                    <div class="d-inline-block align-middle">
+                                    <img src="{{ post.author_pic.url }}" alt="user image" class="img-radius img-40 align-top m-r-15">
+                                    <div class="d-inline-block text-muted m-b-0">
+                                        <h6>{{ post.author.first_name }} {{ post.author.last_name}}</h6>
+                                    </div>
+                                </div>
+                                <div class="text-right">
+                                    <h6 class="f-w-700 text-muted m-b-0">{{ post.publish }}<i class="fa fa-level-up text-c-green m-l-10"></i></h6>
+                                </div>
+                                    <p>
+                                        {{ post.body|truncatewords:40|linebreaks }}
+                                    </p>
+                                </div>
+                            </div>
+                            {% endfor %}
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <!-- Django ends -->
+
+            </div>
+        </div>
+        <!-- Row end -->
+        
+{% endblock main_content%}

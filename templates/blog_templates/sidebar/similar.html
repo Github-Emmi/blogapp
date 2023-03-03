@@ -1,0 +1,13 @@
+<div class="tab-pane fade show active" id="pills-popular" role="tabpanel" aria-labelledby="pills-popular-tab">
+    <div class="post-entry-1 border-bottom">
+      {% for similar in similars %}
+      <div class="post-meta"><span class="date">{{ similar.categories }}</span> <span class="mx-1">&bullet;</span> <span>{{ similar.publish }}</span></div>
+      <h2 class="mb-2"><a href="{{ similar.get_absolute_url }}">{{ similar.title }}</a></h2>
+      <span class="author mb-3 d-block">{{ similar.author.first_name }} {{ similar.author.last_name }}</span>
+      {% empty %}
+      <h2 class="mb-2"> There are no similar posts yet. </h2>
+      {% endfor %}
+    </div>
+  </div>
+
+    

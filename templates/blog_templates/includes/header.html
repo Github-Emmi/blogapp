@@ -1,0 +1,51 @@
+{% load static %}
+<div class="container-fluid container-xl d-flex align-items-center justify-content-between">
+
+    <a href="{% url 'blog:index' %}" class="logo d-flex align-items-center">
+      <img src="{% static 'blog-assets/img/logo.png' %}" alt="">
+      <h1>Emmi Blog</h1>
+    </a>
+
+    <nav id="navbar" class="navbar">
+      <ul>
+        <li>
+          {% url 'blog:index' as index %}
+          <a href="{{ index }}">Blog</a></li>
+        <li class="dropdown"><a href="{% url 'blog:categories' %}"><span>Categories</span> <i class="bi bi-chevron-down dropdown-indicator"></i></a>
+          <ul>
+            <li><a href="{% url 'blog:html' %}">HTML</a></li>
+            <li><a href="{% url 'blog:css' %}">CSS</a></li>
+            <li><a href="{% url 'blog:js' %}">JavaScripts</a></li>
+            <li><a href="{% url 'blog:python' %}">Python</a></li>
+            <li><a href="{% url 'blog:django' %}">Django</a></li>
+          </ul>
+        </li>
+
+        <li><a href="{% url 'blog:about' %}">About</a></li>
+        <li><a href="{% url 'blog:contact' %}">Contact</a></li>
+        <li><a href="{% url 'blog:login' %}">Login</a></li>
+      </ul>
+    </nav><!-- .navbar -->
+
+    <div class="position-relative">
+      <a target='_blank' href="https://www.facebook.com/profile.php?id=100077257599929" class="mx-2"><span class="bi-facebook"></span></a>
+      <a target='_blank' href="https://twitter.com/emmi_dev01" class="mx-2"><span class="bi-twitter"></span></a>
+      <a target='_blank' href="https://www.youtube.com/@emmidev" class="mx-2"><span class="bi-youtube"></span></a>
+
+      <a href="#" class="mx-2 js-search-open"><span class="bi-search"></span></a>
+      <i class="bi bi-list mobile-nav-toggle"></i>
+
+      <!-- ======= Search Form ======= -->
+      <div class="search-form-wrap js-search-form-wrap">
+        <form method="get" action="{% url 'blog:categories' %}" class="search-form">
+          {% csrf_token %}
+          <button type="get" class="btn js-search"><span class="icon bi-search"></span></button>
+          {{ search_form.query.errors }}
+            {{ search_form.query }}
+          <button class="btn js-search-close"><span class="bi-x"></span></button>
+        </form>
+      </div><!-- End Search Form -->
+
+    </div>
+
+  </div>

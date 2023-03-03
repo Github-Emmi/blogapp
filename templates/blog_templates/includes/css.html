@@ -1,0 +1,111 @@
+    {% load static %}
+        <div class="container" data-aos="fade-up">
+  
+          <div class="section-header d-flex justify-content-between align-items-center mb-5">
+            <h2>CSS</h2>
+            <div><a href="" class="more">See All CSS</a></div>
+          </div>
+  
+          <div class="row">
+            <div class="col-md-9">
+  
+              <div class="d-lg-flex post-entry-2">
+                <a href="{{ css_single.get_absolute_url }}" class="me-4 thumbnail mb-4 mb-lg-0 d-inline-block">
+                  <img src="{{ css_single.image.url }}" alt="" class="img-fluid">
+                </a>
+                <div>
+                  <div class="post-meta"><span class="date">{{ css_single.categories }}</span> <span class="mx-1">&bullet;</span> <span>{{ css_single.publish }}</span></div>
+                  <h3><a href="{{ css_single.get_absolute_url }}">{{ css_single.title }}</a></h3>
+                  <p>{{ css_single.body|truncatewords:40|linebreaks }}</p>
+                  <div class="d-flex align-items-center author">
+                    <div class="photo"><img src="{{ css_single.author.profile_pic.url }}" alt="photo" class="img-fluid"></div>
+                    <div class="name">
+                      <h3 class="m-0 p-0">{{ css_single.author.first_name }} {{ css_single.author.last_name }}</h3>
+                    </div>
+                  </div>
+                </div>
+              </div>
+  
+              <div class="row">
+                <div class="col-lg-4">
+                  <div class="post-entry-1 border-bottom">
+                    <a href="single-post.html"><img src="{% static 'blog-assets/img/post-landscape-1.jpg' %}" alt="" class="img-fluid"></a>
+                    <div class="post-meta"><span class="date">{{ css_single.categories }}</span> <span class="mx-1">&bullet;</span> <span>Nov. 29, 2022, 11:15 P.M.</span></div>
+                    <h2 class="mb-2"><a href="single-post.html">CSS Text Properties</a></h2>
+                    <div class="d-flex align-items-center author">
+                        <div class="photo"><img src="{{ css_single.author_pic.url }}" alt="photo" class="img-fluid"></div>
+                        <span class="author mb-3 d-block">{{ css_single.author.first_name }} {{ css_single.author.last_name }}</span>
+                    </div>
+                    <p class="mb-4 d-block">
+                      Specifying two or more
+                      font values is known as specifying a font stack. If the browser does not support the
+                      primary font, it displays the second font family indicated and if the browser does not
+                      support the second font family value, the browser uses the...
+                    </p>
+                  </div>
+  
+                  <div class="post-entry-1">
+                    <div class="post-meta"><span class="date">{{ css_single.categories }}</span> <span class="mx-1">&bullet;</span> <span>Dec. 9, 2022, 2:38 P.M.</span></div>
+                    <h2 class="mb-2"><a href="single-post.html">Creating An External Style Sheet</a></h2>
+                    <span class="author mb-3 d-block">{{ css_single.author.first_name }} {{ css_single.author.last_name }}</span>
+                  </div>
+                </div>
+                <div class="col-lg-8">
+                  <div class="post-entry-1">
+                    <a href="single-post.html"><img src="{% static 'blog-assets/img/post-landscape-2.jpg' %}" alt="" class="img-fluid"></a>
+                    <div class="post-meta"><span class="date">{{ css_single.categories }}</span> <span class="mx-1">&bullet;</span> <span>Jul. 27, 2022, 11:15 A.M.</span></div>
+                    <h2 class="mb-2"><a href="single-post.html">How To Use Float and Clear Properties</a></h2>
+                    <span class="author mb-3 d-block">{{ css_single.author.first_name }} {{ css_single.author.last_name }}</span>
+                    <p class="mb-4 d-block">
+                      The float property allows you to position an element to the right or left of other elements, while remaining within its parent element. The float property has
+                      four valid values: left, right, inherit, and none. The left value floats an element left. The right value floats an element right. The inherit value
+                      floats an element with the same value as its parent element. The none value does...
+                    </p>
+                  </div>
+                </div>
+              </div>
+            </div>
+              <!-- end of col-md-9 -->
+              
+              <!-- right side content -->
+            <div class="col-md-3">
+              <div class="post-entry-1 border-bottom">
+                <div class="post-meta"><span class="date">{{ css_single.categories }}</span> <span class="mx-1">&bullet;</span> <span>Jul 28, 2022, 11:18 A.M.</span></div>
+                <h2 class="mb-2"><a href="single-post.html">Aligning Webpage Content Using CSS</a></h2>
+                <span class="author mb-3 d-block">{{ css_single.author.first_name }} {{ css_single.author.last_name }}</span>
+              </div>
+  
+              <div class="post-entry-1 border-bottom">
+                <div class="post-meta"><span class="date">{{ css_single.categories }}</span> <span class="mx-1">&bullet;</span> <span>Jul. 29, 2022, 4:31 P.M.</span></div>
+                <h2 class="mb-2"><a href="single-post.html">Learn How To Style List for Navigation Links With CSS</a></h2>
+                <span class="author mb-3 d-block">{{ css_single.author.first_name }} {{ css_single.author.last_name }}</span>
+              </div>
+  
+              <div class="post-entry-1 border-bottom">
+                <div class="post-meta"><span class="date">{{ css_single.categories }}</span> <span class="mx-1">&bullet;</span> <span>Jul. 29, 2022, 3:15 P.M.</span></div>
+                <h2 class="mb-2"><a href="single-post.html">CSS List Properties You Should Know</a></h2>
+                <span class="author mb-3 d-block">{{ css_single.author.first_name }} {{ css_single.author.last_name }}</span>
+              </div>
+  
+              <div class="post-entry-1 border-bottom">
+                <div class="post-meta"><span class="date">{{ css_single.categories }}</span> <span class="mx-1">&bullet;</span> <span>Jul. 30, 2022, 8:46 A.M.</span></div>
+                <h2 class="mb-2"><a href="single-post.html">Making Responsive Images</a></h2>
+                <span class="author mb-3 d-block">{{ css_single.author.first_name }} {{ css_single.author.last_name }}</span>
+              </div>
+  
+              <div class="post-entry-1 border-bottom">
+                <div class="post-meta"><span class="date">{{ css_single.categories }}</span> <span class="mx-1">&bullet;</span> <span>Jul. 30, 2022, 10:13 A.M.</span></div>
+                <h2 class="mb-2"><a href="single-post.html">How To Create a Style Rule for the Footer Element</a></h2>
+                <span class="author mb-3 d-block">{{ css_single.author.first_name }} {{ css_single.author.last_name }}</span>
+              </div>
+  
+              <div class="post-entry-1 border-bottom">
+                <div class="post-meta"><span class="date">{{ css_single.categories }}</span> <span class="mx-1">&bullet;</span> <span>Jul. 30, 2022, 12:09 A.M.</span></div>
+                <h2 class="mb-2"><a href="single-post.html">CSS Reset</a></h2>
+                <span class="author mb-3 d-block">{{ css_single.author.first_name }} {{ css_single.author.last_name }}</span>
+              </div>
+            </div> <!--End of right side content -->
+          
+          </div> <!-- End of row main row -->
+        </div>
+      </section>

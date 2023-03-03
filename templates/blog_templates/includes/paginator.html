@@ -1,0 +1,14 @@
+<div class="text-start py-4">
+    <div class="custom-pagination text-center">
+    {% if page.has_previous %}
+      <a href="?page={{ page.previous_page_number }}" class="prev">Prevous</a>
+        {% endif %}
+        <span class ="mx-1">
+          Page {{ page.number }} of {{ page.paginator.num_pages }}
+        </span>
+    {% if page.has_next %}
+        <a href="?page={{ page.next_page_number }}">Next</a>
+        {% endif %}
+    </div>
+  </div>
+</div>
